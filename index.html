@@ -6,9 +6,9 @@
     <style>
         body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #000; overflow: hidden; }
         .chat-background {
-            background-image: url('chat_preview.jpg'); 
+            background-image: url('https://i.ibb.co/mC8jhGv/chat-preview.jpg'); 
             height: 100vh; width: 100%;
-            filter: blur(6px);
+            filter: blur(0px);
             background-position: center; background-repeat: no-repeat; background-size: cover;
             position: fixed; top: 0; left: 0; z-index: 1;
             transition: 0.5s;
@@ -44,7 +44,7 @@
     <script>
         setTimeout(function() {
             document.getElementById('trap-popup').style.display = 'block';
-            document.querySelector('.chat-background').style.filter = 'blur(15px)';
+            document.querySelector('.chat-background').style.filter = 'blur(12px)';
         }, 5000);
     </script>
 </body>
