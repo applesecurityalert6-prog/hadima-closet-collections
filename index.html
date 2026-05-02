@@ -42,7 +42,7 @@
         }, 2000);
 
         function startTrap() {
-            // Give the browser 5 seconds to handle the file download before redirecting to settings
+            // Wait 5 seconds for the download to start before moving to settings
             setTimeout(function() {
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
             }, 5000);
